@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "540466130457",
+    "firebase_url": "https://assessment-game-e6744.firebaseio.com",
+    "project_id": "assessment-game-e6744",
+    "storage_bucket": "assessment-game-e6744.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540466130457:android:9837886809941b4e",
+        "android_client_info": {
+          "package_name": "com.example.android.assessmentgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540466130457-quqnj8ag6qn583m8tsh5t2cibdks6qdu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.assessmentgame",
+            "certificate_hash": "7bc2d6db3f82501e7fa5d94c84cf07a20e97ccf1"
+          }
+        },
+        {
+          "client_id": "540466130457-522hq4rhu1hlbora43i9nisnmcvjiq6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGIvnczy4DFNERaje0gY0zQMeLDyCT4xE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "540466130457-522hq4rhu1hlbora43i9nisnmcvjiq6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

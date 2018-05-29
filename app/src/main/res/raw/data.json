@@ -1,0 +1,64 @@
+{
+  "story": {
+    "storyTitle": "Smitha's Story",
+    "storyId": 1,
+    "content": [
+      {
+        "sceneId": 1,
+        "narrator": true,
+        "backgroundImageChange": true,
+        "backgroundImage": "living_room",
+        "dialogue": "MAKE THE BEST OF WHAT YOU HAVE\n It's a pleasing Monday morning,\n Rahul is getting ready for office.\nSmitha, Rahul's wife comes with a lunch box.",
+        "isLeft": false,
+        "isRight": false,
+        "isQuestion": false
+      },
+      {
+        "sceneId": 2,
+        "narrator": false,
+        "backgroundImageChange": false,
+        "mainCharacterName": "Rahul",
+        "mainCharacterImage": "rahul",
+        "isLeft": true,
+        "isRight": false,
+        "dialogue": "What should i make for breakfast ?",
+        "isQuestion": true,
+        "choices": [
+          "Eggs",
+          "Parathas"
+        ]
+      },
+      {
+        "sceneId": 3,
+        "narrator": false,
+        "backgroundImageChange": false,
+        "mainCharacterName": "Smitha",
+        "mainCharacterImage": "smitha",
+        "isLeft": false,
+        "isRight": true,
+        "dialogue": "Honey, I wanna eat Eggs",
+        "isQuestion": false
+      },
+      {"sceneId": 4,
+        "narrator": false,
+        "backgroundImageChange": false,
+        "mainCharacterName": "Rahul",
+        "mainCharacterImage": "smitha",
+        "isLeft": true,
+        "isRight": false,
+        "dialogue": "I am leaving for the office",
+        "isQuestion": false
+      },
+      {"sceneId": 5,
+        "narrator": false,
+        "backgroundImageChange": false,
+        "mainCharacterName": "Saurabh",
+        "mainCharacterImage": "smitha",
+        "isLeft": false,
+        "isRight": true,
+        "dialogue": "Honey, I wanna eat Eggs",
+        "isQuestion": false
+      }
+    ]
+  }
+}

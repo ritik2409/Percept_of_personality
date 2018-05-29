@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Assessment Game</string>
+    <string-array name="gender">
+        <item>Select Gender:-</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Rather Not Stay</item>
+    </string-array>
+
+    <string-array name="profession">
+        <item>Select Profession:-</item>
+        <item>Student</item>
+        <item>House Maker</item>
+        <item>Business person</item>
+    </string-array>
+</resources>
