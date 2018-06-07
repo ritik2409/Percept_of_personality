@@ -18,13 +18,13 @@ public class MainParser {
 
     @SerializedName("story")
     @Expose
-    private Story story;
+    private ArrayList<Story> story = new ArrayList<>();
 
-    public Story getStory() {
+    public ArrayList<Story> getStory() {
         return story;
     }
 
-    public void setStory(Story story) {
+    public void setStory(ArrayList<Story> story) {
         this.story = story;
     }
 

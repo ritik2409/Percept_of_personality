@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.assessmentgame">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +24,9 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".signup" />
         <activity android:name=".GameDetails" />
-        <activity android:name=".GameBegins"></activity>
+        <activity android:name=".GameBegins" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".DummyActivity"></activity>
     </application>
 
 </manifest>

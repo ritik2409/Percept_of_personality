@@ -28,7 +28,7 @@ public class Content {
     @Expose
     private boolean backgroundImageChange;
 
-    @SerializedName("dialogue")
+    @SerializedName("dialogue2")
     @Expose
     private String dialogue;
 
@@ -56,6 +56,17 @@ public class Content {
     @Expose
     private String[] choices;
 
+    @SerializedName("nextId")
+    @Expose
+    private int nextId;
+
+    @SerializedName("goWithOne")
+    @Expose
+    private int goWithOne;
+
+    @SerializedName("goWithTwo")
+    @Expose
+    private  int goWithTwo;
 
     public boolean getIsRight() {
         return isRight;
@@ -149,9 +160,33 @@ public class Content {
         this.choices = choices;
     }
 
+    public int getNextId() {
+        return nextId;
+    }
+
+    public void setNextId(int nextId) {
+        this.nextId = nextId;
+    }
+
+    public int getGoWithOne() {
+        return goWithOne;
+    }
+
+    public void setGoWithOne(int goWithOne) {
+        this.goWithOne = goWithOne;
+    }
+
+    public int getGoWithTwo() {
+        return goWithTwo;
+    }
+
+    public void setGoWithTwo(int goWithTwo) {
+        this.goWithTwo = goWithTwo;
+    }
+
 
 //    @Override
 //    public String toString() {
-//        return "ClassPojo [isRight = " + isRight + ", narrator = " + narrator + ", sceneId = " + sceneId + ", backgroundImageChange = " + backgroundImageChange + ", dialogue = " + dialogue + ", backgroundImage = " + backgroundImage + ", isLeft = " + isLeft + "]";
+//        return "ClassPojo [isRight = " + isRight + ", narrator = " + narrator + ", sceneId = " + sceneId + ", backgroundImageChange = " + backgroundImageChange + ", dialogue2 = " + dialogue2 + ", backgroundImage = " + backgroundImage + ", isLeft = " + isLeft + "]";
 //    }
 }

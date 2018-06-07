@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root1"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/living_room"
@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"></LinearLayout>
+        android:layout_weight="10"></LinearLayout>
 
 
     <LinearLayout
@@ -21,6 +21,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,15 +33,17 @@
                 android:id="@+id/protagonist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="100"
+                android:layout_weight="10"
                 android:scaleType="fitCenter" />
 
             <TextView
                 android:id="@+id/protagonist_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@android:color/holo_green_dark"
+                android:background="@drawable/dialogue2"
+                android:paddingBottom="10dp"
                 android:textColor="@android:color/white"
                 android:textSize="22sp" />
 
@@ -48,20 +51,30 @@
                 android:id="@+id/pchoice1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@android:color/holo_blue_light"
+                android:background="@drawable/rounded_corner"
+                android:onClick="action"
+                android:padding="5dp"
+                android:text="Yo"
                 android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:textSize="22sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/pchoice2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:background="@android:color/holo_blue_light"
+                android:background="@drawable/rounded_corner"
+                android:onClick="action"
+                android:padding="5dp"
+                android:text="heya"
                 android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:textSize="22sp"
+                android:visibility="gone" />
 
         </LinearLayout>
 
@@ -69,12 +82,15 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/narrator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/dialoguedesign"
+                android:text="dfghenf"
                 android:textColor="@android:color/white"
                 android:textSize="22sp" />
 
@@ -84,21 +100,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/other_characters"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="100"
+                android:layout_weight="10"
                 android:scaleType="fitCenter" />
 
             <TextView
                 android:id="@+id/other_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@android:color/holo_green_dark"
+                android:background="@drawable/dialoguedesign"
+                android:paddingBottom="10dp"
                 android:textColor="@android:color/white"
                 android:textSize="22sp" />
 
@@ -106,20 +125,28 @@
                 android:id="@+id/ochoice1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_light"
+                android:onClick="action"
+                android:padding="5dp"
                 android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:textSize="22sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/ochoice2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_light"
+                android:onClick="action"
+                android:padding="5dp"
                 android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:textSize="22sp"
+                android:visibility="gone" />
 
         </LinearLayout>
     </LinearLayout>
