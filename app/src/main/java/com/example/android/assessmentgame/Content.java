@@ -28,7 +28,7 @@ public class Content {
     @Expose
     private boolean backgroundImageChange;
 
-    @SerializedName("dialogue2")
+    @SerializedName("dialogue")
     @Expose
     private String dialogue;
 

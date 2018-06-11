@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.assessmentgame.GameDetails">
+    tools:context="com.example.android.assessmentgame.GameDetails"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="It's time to choose your story.\n Choose the Story you want to play."
+        android:textColor="@color/black"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -11,7 +19,7 @@
         android:layout_height="wrap_content" />
 
 
-</FrameLayout>
+</LinearLayout>
 
 
     <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:background="#007C8C"--><!--android:fillViewport="true"--><!--tools:context="com.example.android.assessmentgame.GameDetails">-->

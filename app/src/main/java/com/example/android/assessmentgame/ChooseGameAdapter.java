@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ public class ChooseGameAdapter extends RecyclerView.Adapter<ChooseGameAdapter.My
     @Override
     public ChooseGameAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = activity.getLayoutInflater()
-                .inflate(resource,parent,false);
+                .inflate(resource, parent, false);
         return new MyViewHolder(itemView);
 
     }
@@ -78,8 +79,8 @@ public class ChooseGameAdapter extends RecyclerView.Adapter<ChooseGameAdapter.My
         @Override
         public void onClick(View v) {
 
-            Intent intent = new Intent(c, DummyActivity.class);
-            intent.putExtra("Scene_Id",getAdapterPosition());
+            Intent intent = new Intent(c, GameBegins.class);
+            intent.putExtra("Scene_Id", getAdapterPosition());
             c.startActivity(intent);
 
         }
