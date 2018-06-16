@@ -26,7 +26,7 @@
         <activity android:name=".GameDetails" />
         <activity android:name=".GameBegins" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".DummyActivity"></activity>
+        <activity android:name=".DummyActivity" />
     </application>
 
 </manifest>

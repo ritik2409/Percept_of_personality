@@ -18,11 +18,15 @@ public class Story {
 
     @SerializedName("storyId")
     @Expose
-    private String storyId;
+    private int storyId;
 
     @SerializedName("storyTitle")
     @Expose
     private String storyTitle;
+
+    @SerializedName("storyCover")
+    @Expose
+    private String storyCover;
 
     public ArrayList<Content> getContent() {
         return content;
@@ -32,11 +36,11 @@ public class Story {
         this.content = content;
     }
 
-    public String getStoryId() {
+    public int getStoryId() {
         return storyId;
     }
 
-    public void setStoryId(String storyId) {
+    public void setStoryId(int storyId) {
         this.storyId = storyId;
     }
 
@@ -54,4 +58,11 @@ public class Story {
     }
 
 
+    public String getStoryCover() {
+        return storyCover;
+    }
+
+    public void setStoryCover(String storyCover) {
+        this.storyCover = storyCover;
+    }
 }

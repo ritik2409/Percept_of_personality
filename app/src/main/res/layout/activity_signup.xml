@@ -85,6 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/password"
+                android:drawableStart="@drawable/password"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:singleLine="true"

@@ -5,7 +5,7 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/living_room"
+    android:background="@color/white"
     tools:context="com.example.android.assessmentgame.GameBegins">
 
     <ImageView
@@ -15,11 +15,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="400dp"
-        android:layout_marginRight="400dp"
+        android:layout_marginEnd="380dp"
+        android:layout_marginRight="380dp"
         android:layout_marginTop="49dp"
         android:src="@drawable/rahul"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
 
     <com.example.android.assessmentgame.TypeWriter
@@ -27,46 +27,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginBottom="54dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginRight="85dp"
-        android:background="@drawable/dialogue2"
-        android:text="nklnk"
+        android:layout_marginLeft="185dp"
+        android:layout_marginStart="185dp"
+        android:background="@drawable/left2"
+        android:text="nklnkjjbjbnklnknknjkbjbbjkbjkkjbjjkb"
         android:textColor="@color/white"
         android:textSize="15sp"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <com.example.android.assessmentgame.TypeWriter
         android:id="@+id/pchoice1"
-        android:layout_width="420dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/protagonist_text"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/protagonist_text"
+        android:layout_alignRight="@+id/protagonist_text"
         android:layout_marginBottom="29dp"
         android:background="@drawable/rounded_corner"
         android:onClick="action"
         android:text="Hey what fdg,m g erglkrew gg r"
         android:textColor="@color/black"
         android:textSize="15sp"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <com.example.android.assessmentgame.TypeWriter
         android:id="@+id/pchoice2"
-        android:layout_width="420dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/pchoice1"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/pchoice1"
+        android:layout_alignRight="@+id/pchoice1"
         android:layout_marginBottom="5dp"
         android:background="@drawable/rounded_corner"
         android:onClick="action"
         android:text="Hey whats upb jh"
         android:textColor="@color/black"
         android:textSize="15sp"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
 
     <com.example.android.assessmentgame.TypeWriter
@@ -79,7 +79,7 @@
         android:text="ndsjbll "
         android:textColor="@color/white"
         android:textSize="15sp"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/other_characters"
@@ -91,57 +91,56 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/protagonist"
         android:layout_alignTop="@+id/protagonist"
-        android:layout_marginLeft="360dp"
-        android:layout_marginStart="360dp"
+        android:layout_marginLeft="380dp"
+        android:layout_marginStart="380dp"
         android:layout_marginTop="49dp"
         android:src="@drawable/smitha"
-        android:visibility="visible"/>
+        android:visibility="visible" />
 
     <com.example.android.assessmentgame.TypeWriter
         android:id="@+id/other_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="54dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
-        android:background="@drawable/otherdialogue2"
-        android:text="hj jsdkg kljsg kjre gerkjg erg"
-        android:textColor="@color/white"
+        android:layout_marginEnd="200dp"
+        android:layout_marginRight="200dp"
+        android:background="@drawable/new_right2"
+        android:text="He always ignores me. I think he is jealous"
+        android:textColor="@color/black"
         android:textSize="15sp"
-        android:visibility="visible"
-        />
+        android:visibility="visible" />
 
     <com.example.android.assessmentgame.TypeWriter
         android:id="@+id/ochoice1"
-        android:layout_width="400dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/other_text"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/other_text"
+        android:layout_alignRight="@+id/other_text"
         android:layout_marginBottom="29dp"
         android:background="@drawable/rounded_corner"
         android:onClick="action"
         android:text="Hey what fdg,m g erglkrew gg r"
         android:textColor="@color/black"
         android:textSize="15sp"
-        android:visibility="visible"/>
+        android:visibility="visible" />
 
     <com.example.android.assessmentgame.TypeWriter
         android:id="@+id/ochoice2"
-        android:layout_width="400dp"
+        android:layout_width="@+id/ochoice1"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/ochoice1"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/ochoice1"
+        android:layout_alignRight="@+id/ochoice1"
         android:background="@drawable/rounded_corner"
         android:onClick="action"
         android:text="Hey whats up"
         android:textColor="@color/black"
         android:textSize="15sp"
-        android:visibility="visible"/>
+        android:visibility="visible" />
 
 
 </RelativeLayout>

@@ -27,12 +27,14 @@ public class ChooseGameAdapter extends RecyclerView.Adapter<ChooseGameAdapter.My
     int resource;
     String[] storyTitle;
     Integer[] storyImage;
+    String dataFile;
 
-    public ChooseGameAdapter(Activity activity, String[] storyTitle, Integer[] storyImage, int resource) {
+    public ChooseGameAdapter(Activity activity, String[] storyTitle, Integer[] storyImage, int resource, String dataFile) {
         this.activity = activity;
         this.storyTitle = storyTitle;
         this.storyImage = storyImage;
         this.resource = resource;
+        this.dataFile = dataFile;
     }
 
     @Override
@@ -76,12 +78,11 @@ public class ChooseGameAdapter extends RecyclerView.Adapter<ChooseGameAdapter.My
 
         }
 
+
+
         @Override
         public void onClick(View v) {
-
-            Intent intent = new Intent(c, GameBegins.class);
-            intent.putExtra("Scene_Id", getAdapterPosition());
-            c.startActivity(intent);
+            ((GameDetails)activity).askResume(getAdapterPosition());
 
         }
     }

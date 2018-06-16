@@ -3,15 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.assessmentgame.GameDetails"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.example.android.assessmentgame.GameDetails">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:text="It's time to choose your story.\n Choose the Story you want to play."
-        android:textColor="@color/black"/>
+        android:background="@color/colorSplash"
+        android:gravity="center"
+        android:text="Choose a Story."
+        android:textColor="@color/white"
+        android:textSize="22sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

@@ -11,28 +11,43 @@ import android.util.Log;
 import android.view.ViewTreeObserver;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class DummyActivity extends AppCompatActivity {
-    int i = 0;
+//    int i = 0;
+//    TextView textView;
+//    ResumeManager resumeManager;
+//    int k;
+    int value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dummy);
         final Intent intent = getIntent();
-        Integer value = intent.getIntExtra("Scene_Id", 10);
+        value = intent.getIntExtra("Scene_Id", 0);
+        TextView textView = (TextView) findViewById(R.id.text4);
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
+        if(linearLayout.getBackground()==null)
+            textView.setText("No Background");
+        else textView.setText("Background is white");
 
-        final TextView typeWriter = (TextView) findViewById(R.id.text4);
-        typeWriter.setText("Hey what the hell do you want to do with my name. Just go back! You understand you idiot.");
+ }
+
+
+//        typeWriter.setText(++0++"0+Hey what the hell do you want to do with my name. Just go back! You understand you idiot.");
 //        String rest = (String) typeWriter.getText().subSequence(typeWriter.getLayout().getEllipsisStart(0), typeWriter.getText().length());
 //        Log.d("Rest of the text", rest);
 
 
-        final TextView textView = (TextView) findViewById(R.id.text5);
-        final TextView textView1 = (TextView) findViewById(R.id.text6);
+//        final TextView textView = (TextView) findViewById(R.id.text5);
+//        final TextView textView1 = (TextView) findViewById(R.id.text6);
 //        textView.setText(typeWriter.getText().subSequence(typeWriter.getLayout().getEllipsisStart(0),typeWriter.getText().length()));
 //        ImageView img = (ImageView) findViewById(R.id.img);
 
@@ -46,33 +61,49 @@ public class DummyActivity extends AppCompatActivity {
 //        });
 
 
-        boolean post = typeWriter.post(new Runnable() {
-            @Override
-            public void run() {
-                int lineCount = typeWriter.getLineCount();
-                // Use lineCount here
-                if (lineCount > 1) {
-                    int lineEndIndex = typeWriter.getLayout().getLineEnd(0);
-                    String text = typeWriter.getText().subSequence(0, lineEndIndex - 3) + "...";
-                    textView.setText(text);
-
-                    for (i = lineEndIndex - 1; i >= 0; i--) {
-                        char ch = text.charAt(i);
-                        if (ch == ' ')
-                            break;
-                    }
-
-                    String text1 = (String) typeWriter.getText().subSequence(i + 1, typeWriter.getText().length());
-                    textView1.setText(text1);
-                }
-
-            }
-        });
-
+//        boolean post = typeWriter.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                int lineCount = typeWriter.getLineCount();
+//                // Use lineCount here
+//                if (lineCount > 1) {
+//                    int lineEndIndex = typeWriter.getLayout().getLineEnd(0);
+//                    String text = typeWriter.getText().subSequence(0, lineEndIndex - 3) + "...";
+//                    textView.setText(text);
+//
+//                    for (i = lineEndIndex - 1; i >= 0; i--) {
+//                        char ch = text.charAt(i);
+//                        if (ch == ' ')
+//                            break;
+//                    }
+//
+//                    String text1 = (String) typeWriter.getText().subSequence(i + 1, typeWriter.getText().length());
+//                    textView1.setText(text1);
+//                }
+//
+//            }
+//        });
+//
 
     }
 
-//    public static String getEllipsisText(TextView textView) {
+//    @Override
+//    protected void onPause() {
+//        resumeManager.updateJson(value+1, 69);
+//        super.onPause();
+//    }
+
+//    @Override
+//    protected void onDestroy() {
+//        resumeManager.updateJson(value+1, 69);
+//
+//
+//
+//
+//
+//        super.onDestroy();
+//    }
+    //    public static String getEllipsisText(TextView textView) {
 //        // test that we have a textview and it has text
 //        if (textView==null || TextUtils.isEmpty(textView.getText())) return null;
 //        Layout l = textView.getLayout();
@@ -85,5 +116,7 @@ public class DummyActivity extends AppCompatActivity {
 //
 //        return null;
 //    }
-}
+
+
+
 

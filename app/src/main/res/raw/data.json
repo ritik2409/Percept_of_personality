@@ -1,8 +1,9 @@
 {
   "story": [
     {
-      "storyTitle": "Smitha's Story",
+      "storyTitle": "Rahul's Story",
       "storyId": 1,
+      "storyCover":"rahul_story",
       "content": [
         {
           "sceneId": 1,
@@ -123,7 +124,7 @@
           "mainCharacterImage": "saurabh",
           "isLeft": false,
           "isRight": true,
-          "dialogue": "He always ignores me. I think he is jealous of me.",
+          "dialogue": "He always ignores me. I think he is jealous of me. God knows what problem he has with me. Why I am thinking about him. Just go to hell.ejr g kelrjngerm, gklelkrmgkler g ermg erklg dsgdfxbfxb cxbfdbfdb xcvdsbf c cxfb vvcbn v bgf ",
           "isQuestion": false,
           "nextId": 11
         },
@@ -155,7 +156,7 @@
           "sceneId": 13,
           "narrator": false,
           "backgroundImageChange": false,
-          "mainCharacterName": "Rahu;",
+          "mainCharacterName": "Rahul",
           "mainCharacterImage": "rahul",
           "isLeft": true,
           "isRight": false,
@@ -176,6 +177,95 @@
           "isQuestion": false
         }
       ]
+    },
+    {
+      "storyTitle": "Smitha's Story",
+      "storyId": 2,
+      "storyCover":"smitha_story",
+      "content":[{
+        "sceneId": 1,
+        "narrator": false,
+        "backgroundImageChange": false,
+        "mainCharacterName": "Smitha",
+        "mainCharacterImage": "smitha",
+        "isLeft": true,
+        "isRight": false,
+        "dialogue": "OK! Boss I'll make sure to that.",
+        "isQuestion": false,
+        "nextId": 2
+      },
+        {
+          "sceneId": 2,
+          "narrator": true,
+          "backgroundImageChange": true,
+          "backgroundImage": "living_room",
+          "mainCharacterName": "Boss",
+          "mainCharacterImage": "boss",
+          "isLeft": false,
+          "isRight": false,
+          "dialogue": "Smitha reaches home back. He is really tired and goes to sleep.",
+          "isQuestion": false
+        }]
+
+    },
+    {
+      "storyTitle": "Saurabh's Story",
+      "storyId": 3,
+      "storyCover":"saurabh_story",
+      "content":[{
+        "sceneId": 1,
+        "narrator": false,
+        "backgroundImageChange": false,
+        "mainCharacterName": "Saurabh",
+        "mainCharacterImage": "saurabh",
+        "isLeft": true,
+        "isRight": false,
+        "dialogue": "OK! Boss I'll make sure to that.",
+        "isQuestion": false,
+        "nextId": 2
+      },
+        {
+          "sceneId": 2,
+          "narrator": true,
+          "backgroundImageChange": true,
+          "backgroundImage": "living_room",
+          "mainCharacterName": "Rahul",
+          "mainCharacterImage": "rahul",
+          "isLeft": false,
+          "isRight": false,
+          "dialogue": "Rahul reaches home back. He is really tired and goes to sleep.",
+          "isQuestion": false
+        }]
+
+    },
+    {
+      "storyTitle": "Boss Story",
+      "storyId": 4,
+      "storyCover":"boss_story",
+      "content": [{
+        "sceneId": 1,
+        "narrator": false,
+        "backgroundImageChange": false,
+        "mainCharacterName": "Boss",
+        "mainCharacterImage": "boss",
+        "isLeft": true,
+        "isRight": false,
+        "dialogue": "OK! Boss I'll make sure to that.",
+        "isQuestion": false,
+        "nextId": 2
+      },
+        {
+          "sceneId": 2,
+          "narrator": true,
+          "backgroundImageChange": true,
+          "backgroundImage": "living_room",
+          "mainCharacterName": "Rahul",
+          "mainCharacterImage": "rahul",
+          "isLeft": false,
+          "isRight": false,
+          "dialogue": "Rahul reaches home back. He is really tired and goes to sleep.",
+          "isQuestion": false
+        }]
     }
   ]
 }

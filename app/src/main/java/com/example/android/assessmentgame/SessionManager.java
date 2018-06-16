@@ -120,9 +120,9 @@ public class SessionManager {
 
     }
 
-    /**
+    /*
      * Quick check for login
-     * **/
+     * */
     // Get Login State
     public boolean isLoggedIn(){
         return pref.getBoolean(IS_LOGIN, false);
