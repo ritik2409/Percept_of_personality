@@ -37,20 +37,26 @@ public class LoginActivity extends AppCompatActivity {
 //                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
 //            }
 //        });
-        Button letsgo = (Button) findViewById(R.id.letsgo);
-        letsgo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent it = new Intent(LoginActivity.this,GameDetails.class);
-                startActivity(it);
-
-            }
-        });
+//        Button letsgo = (Button) findViewById(R.id.letsgo);
+//        letsgo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent it = new Intent(LoginActivity.this,GameDetails.class);
+//                startActivity(it);
+//
+//            }
+//        });
 
     }
 
     public void tosignup(View view) {
         Intent intent = new Intent(this,signup.class);
         startActivity(intent);
+    }
+
+    public void loginSkipped(View view) {
+        Intent it = new Intent(LoginActivity.this,GameDetails.class);
+        startActivity(it);
+
     }
 }

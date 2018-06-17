@@ -8,15 +8,42 @@ public class GameProgress {
 
     int sceneId;
     int storyId;
+    int progress;
+    int updatedBackground;
+    String protagonistName;
 
-
-
-    public GameProgress(int storyId, int sceneId) {
+    public GameProgress(int sceneId, int storyId, int progress, int updatedBackground, String protagonistName) {
         this.sceneId = sceneId;
         this.storyId = storyId;
+        this.progress = progress;
+        this.updatedBackground = updatedBackground;
+        this.protagonistName = protagonistName;
     }
 
 
+    public int getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
+
+    public int getUpdatedBackground() {
+        return updatedBackground;
+    }
+
+    public void setUpdatedBackground(int updatedBackground) {
+        this.updatedBackground = updatedBackground;
+    }
+
+    public String getProtagonistName() {
+        return protagonistName;
+    }
+
+    public void setProtagonistName(String protagonistName) {
+        this.protagonistName = protagonistName;
+    }
 
 
     public int getSceneId() {

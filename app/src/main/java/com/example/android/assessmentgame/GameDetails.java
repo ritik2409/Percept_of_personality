@@ -2,6 +2,7 @@ package com.example.android.assessmentgame;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -15,11 +16,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.util.Util;
 import com.google.gson.Gson;
 
 import java.io.InputStream;
@@ -74,49 +77,70 @@ public class GameDetails extends AppCompatActivity {
         rv.setAdapter(adapter);
 
 
-
-
     }
 
     public void askResume(final int position) {
-        final Dialog dialog = new Dialog(this);
+        final Dialog dialog = new Dialog(GameDetails.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
+//        dialog.findViewById(R.id.linear).setBackground(new ShapeDrawable(new DialogBoxShape()));
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
         dialog.setContentView(R.layout.resume_dialog);
+        ImageView imageView = dialog.findViewById(R.id.storyCover);
+        imageView.setImageResource(drawable[position]);
+        TextView textView = dialog.findViewById(R.id.storyHeader);
+        textView.setText(storyHeader[position]);
+        final EditText editText = dialog.findViewById(R.id.character_name);
         dialog.findViewById(R.id.continue_game).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                k = manager.getSceneId(1);
-//                root.setBackgroundResource(rm.getCurrentBackground());
-                Intent intent = new Intent(GameDetails.this,GameBegins.class);
-                intent.putExtra("Scene_Id",position);
-                intent.putExtra("Json_data",dataFile);
+                if (manager.getSceneId(position + 1) == 0) {
+                    if (!TextUtils.isEmpty(editText.getText().toString())) {
+                        manager.updateProtagonist(position, editText.getText().toString());
+                        startGame(position);
+                    } else
+                        Toast.makeText(GameDetails.this, "Protagonist Name can't be empty!", Toast.LENGTH_SHORT).show();
+                }
+
+                if (manager.getProtagonist(position) != "No Name")
+                    startGame(position);
 
                 dialog.dismiss();
             }
         });
+
+        if (manager.getSceneId(position + 1) == 0) {
+            dialog.findViewById(R.id.restart_game).setVisibility(View.GONE);
+            TextView textView1 = dialog.findViewById(R.id.continue_game);
+            textView1.setText("Play");
+        } else editText.setVisibility(View.GONE);
 
         dialog.findViewById(R.id.restart_game).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 manager.clearGameProgress(1);
+                startGame(position);
                 dialog.dismiss();
             }
         });
-        dialog.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.cancel();
-            }
-        });
 
-//        int progress = rm.getSceneId(1) / content.size() * 100;
 
-//        ProgressBar progressBar = findViewById(R.id.progress);
-//        progressBar.setProgress(progress);
+        int progress = (manager.getSceneId(position + 1) / story.get(position).getContent().size()) * 100;
+
+        ProgressBar progressBar = dialog.findViewById(R.id.progress);
+        progressBar.setProgress(progress);
 
 
         dialog.show();
+
+
+    }
+
+    public void startGame(int position) {
+        Intent intent = new Intent(GameDetails.this, GameBegins.class);
+        intent.putExtra("Scene_Id", position);
+        intent.putExtra("Json_data", dataFile);
+        startActivity(intent);
 
 
     }
@@ -188,7 +212,7 @@ public class GameDetails extends AppCompatActivity {
         GameProgress gameProgress;
 
         for (int i = 0; i < story.size(); i++) {
-            gameProgress = new GameProgress(story.get(i).getStoryId(), 0);
+            gameProgress = new GameProgress(story.get(i).getStoryId(), 0, 50, R.drawable.living_room, "Protagonist");
             arrayList.add(gameProgress);
 
         }

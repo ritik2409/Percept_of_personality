@@ -31,6 +31,8 @@ public class ResumeManager {
 
     public static final String CURRENT_BACKGROUND = "current_background";
 
+    public static final String Main_Character_Name = "main_character_name";
+
 
     public ResumeManager(Context context) {
         this.context = context;
@@ -90,16 +92,7 @@ public class ResumeManager {
     }
 
     public void clearGameProgress(int storyId) {
-        int j;
-        Gson gson = new Gson();
-        String json = myData();
-        GameResumeParser gameResumeParser = gson.fromJson(json, GameResumeParser.class);
-        ArrayList<GameProgress> gameProgresses = gameResumeParser.getValues();
-        for (j = 0; j < gameProgresses.size(); j++) {
-            if (gameProgresses.get(j).getStoryId() == storyId)
-                gameProgresses.get(j).setSceneId(0);
-
-        }
+        updateJson(storyId, 0);
 
 
     }
@@ -109,19 +102,113 @@ public class ResumeManager {
         editor.commit();
     }
 
-    public void updateBackgroud(int resourceId) {
-        editor.putInt(CURRENT_BACKGROUND, resourceId);
+    public void updateBackground(int storyId, int resourceId) {
+        int j;
+        Gson gson = new Gson();
+        String json = preferences.getString("MyData", "not found!");
+        GameResumeParser gameResumeParser = gson.fromJson(json, GameResumeParser.class);
+        ArrayList<GameProgress> gameProgresses = gameResumeParser.getValues();
+        for (j = 0; j < gameProgresses.size(); j++) {
+            if (gameProgresses.get(j).getStoryId() == storyId) {
+                gameProgresses.get(j).setUpdatedBackground(resourceId);
+                break;
+            }
+        }
+        String updatedJson = gson.toJson(gameResumeParser);
+        editor.putString("MyData", updatedJson);
         editor.commit();
 
 
     }
 
-    public int getCurrentBackground() {
-        return preferences.getInt(CURRENT_BACKGROUND, 0);
+    public int getCurrentBackground(int storyId) {
+        int j;
+        Gson gson = new Gson();
+        String json = myData();
+        GameResumeParser gameResumeParser = gson.fromJson(json, GameResumeParser.class);
+        ArrayList<GameProgress> gameProgresses = gameResumeParser.getValues();
+        for (j = 0; j < gameProgresses.size(); j++) {
+            if (gameProgresses.get(j).getStoryId() == storyId)
+                break;
+
+        }
+
+        return gameProgresses.get(j).getUpdatedBackground();
+
     }
 
     public String myData() {
-        return preferences.getString("MyData","Not Found");
+        return preferences.getString("MyData", "Not Found");
+    }
+
+    public void updateProtagonist(int storyId, String protagonistName) {
+        int j;
+        Gson gson = new Gson();
+        String json = myData();
+        GameResumeParser gameResumeParser = gson.fromJson(json, GameResumeParser.class);
+        ArrayList<GameProgress> gameProgresses = gameResumeParser.getValues();
+        for (j = 0; j < gameProgresses.size(); j++) {
+            if (gameProgresses.get(j).getStoryId() == storyId) {
+                gameProgresses.get(j).setProtagonistName(protagonistName);
+                break;
+            }
+        }
+        String updatedJson = gson.toJson(gameResumeParser);
+        editor.putString("MyData", updatedJson);
+        editor.commit();
+    }
+
+    public String getProtagonist(int storyId) {
+        int j;
+        Gson gson = new Gson();
+        String json = myData();
+        GameResumeParser gameResumeParser = gson.fromJson(json, GameResumeParser.class);
+        ArrayList<GameProgress> gameProgresses = gameResumeParser.getValues();
+        for (j = 0; j < gameProgresses.size(); j++) {
+            if (gameProgresses.get(j).getStoryId() == storyId)
+                break;
+
+        }
+
+        return gameProgresses.get(j).getProtagonistName();
+
+
+    }
+
+    public void updateGameProgress(int storyId, int progress) {
+        int j;
+        Gson gson = new Gson();
+        String json = myData();
+        GameResumeParser gameResumeParser = gson.fromJson(json, GameResumeParser.class);
+        ArrayList<GameProgress> gameProgresses = gameResumeParser.getValues();
+        for (j = 0; j < gameProgresses.size(); j++) {
+            if (gameProgresses.get(j).getStoryId() == storyId) {
+                gameProgresses.get(j).setProgress(progress);
+                break;
+            }
+        }
+        String updatedJson = gson.toJson(gameResumeParser);
+        editor.putString("MyData", updatedJson);
+        editor.commit();
+
+
+    }
+
+    public int getGameProgress(int storyId) {
+        int j;
+        Gson gson = new Gson();
+        String json = myData();
+        GameResumeParser gameResumeParser = gson.fromJson(json, GameResumeParser.class);
+        ArrayList<GameProgress> gameProgresses = gameResumeParser.getValues();
+        for (j = 0; j < gameProgresses.size(); j++) {
+            if (gameProgresses.get(j).getStoryId() == storyId)
+                break;
+
+        }
+
+        return gameProgresses.get(j).getProgress();
+
+
     }
 
 }

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -45,6 +46,7 @@ public class GameBegins extends AppCompatActivity {
     TypeWriter protagonistText;
     TypeWriter narratorText;
     TypeWriter pchoice1, pchoice2, ochoice1, ochoice2;
+    TextView protagonist_name, other_name;
     int k = 0;
     int resourceId;
     String imagename;
@@ -65,7 +67,11 @@ public class GameBegins extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_game_begins);
+//        getActionBar().hide();
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Intent intent = getIntent();
         value = intent.getIntExtra("Scene_Id", 0);
@@ -80,6 +86,8 @@ public class GameBegins extends AppCompatActivity {
         protagonist = (ImageView) findViewById(R.id.protagonist);
         protagonistText = (TypeWriter) findViewById(R.id.protagonist_text);
         narratorText = (TypeWriter) findViewById(R.id.narrator);
+        protagonist_name = findViewById(R.id.protagonist_name);
+        other_name = findViewById(R.id.other_name);
 
         pchoice1 = (TypeWriter) findViewById(R.id.pchoice1);
         pchoice2 = (TypeWriter) findViewById(R.id.pchoice2);
@@ -92,9 +100,9 @@ public class GameBegins extends AppCompatActivity {
 
 //        if (rm.getSceneId(1) != 0)
 //            askResume();
-        k = rm.getSceneId(1);
+        k = rm.getSceneId(value + 1);
         if (k != 0) {
-            root.setBackgroundResource(rm.getCurrentBackground());
+            root.setBackgroundResource(rm.getCurrentBackground(value + 1));
         }
 
         activity();
@@ -102,47 +110,47 @@ public class GameBegins extends AppCompatActivity {
 
     }
 
-    public void askResume() {
-
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
-        dialog.setContentView(R.layout.resume_dialog);
-        dialog.findViewById(R.id.continue_game).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                k = rm.getSceneId(1);
-                root.setBackgroundResource(rm.getCurrentBackground());
-                dialog.dismiss();
-            }
-        });
-        dialog.findViewById(R.id.restart_game).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rm.clearGameProgress(1);
-                dialog.dismiss();
-            }
-        });
-        dialog.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-                Intent intent = new Intent(GameBegins.this, GameDetails.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-//        int progress = rm.getSceneId(1) / content.size() * 100;
-
-//        ProgressBar progressBar = findViewById(R.id.progress);
-//        progressBar.setProgress(progress);
-
-
-        dialog.show();
-
-
-    }
+//    public void askResume() {
+//
+//        final Dialog dialog = new Dialog(this);
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialog.setCancelable(false);
+//        dialog.setContentView(R.layout.resume_dialog);
+//        dialog.findViewById(R.id.continue_game).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                k = rm.getSceneId(1);
+//                root.setBackgroundResource(rm.getCurrentBackground());
+//                dialog.dismiss();
+//            }
+//        });
+//        dialog.findViewById(R.id.restart_game).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                rm.clearGameProgress(1);
+//                dialog.dismiss();
+//            }
+//        });
+//        dialog.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dialog.dismiss();
+//                Intent intent = new Intent(GameBegins.this, GameDetails.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//
+////        int progress = rm.getSceneId(1) / content.size() * 100;
+//
+////        ProgressBar progressBar = findViewById(R.id.progress);
+////        progressBar.setProgress(progress);
+//
+//
+//        dialog.show();
+//
+//
+//    }
 
 
     public void activity() {
@@ -155,14 +163,8 @@ public class GameBegins extends AppCompatActivity {
                     imagename = content.get(k).getBackgroundImage();
                     resourceId = getResources().getIdentifier(imagename, "drawable", getPackageName());
                     root.setBackgroundResource(resourceId);
-                    rm.updateBackgroud(resourceId);
+                    rm.updateBackground(value + 1, resourceId);
                 }
-//                if (((ColorDrawable)root.getBackground()).getCol) {
-//                    imagename = rm.getCurrentBackground();
-//                    resourceId = getResources().getIdentifier(imagename, "drawable", getPackageName());
-//                    root.setBackgroundResource(resourceId);
-//                }
-
 
                 if (content.get(k).getNarrator() == true) {
                     narratorText.animateText(content.get(k).getDialogue());
@@ -173,11 +175,13 @@ public class GameBegins extends AppCompatActivity {
                     imagename = content.get(k).getMainCharacterImage();
                     resourceId = getResources().getIdentifier(imagename, "drawable", getPackageName());
                     protagonist.setImageResource(resourceId);
-                    protagonist.setVisibility(View.VISIBLE);
 //                    protagonist.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.leftslide));
                     protagonistText.setText(content.get(k).getDialogue());
+                    protagonist_name.setText(rm.getProtagonist(value+1));
                     someChanges(protagonistText, content.get(k).getDialogue());
                     protagonistText.setVisibility(View.VISIBLE);
+                    protagonist.setVisibility(View.VISIBLE);
+                    protagonist_name.setVisibility(View.VISIBLE);
                     Log.d("Dialogue is:", content.get(k).getDialogue());
                     if (content.get(k).getIsQuestion() == true) {
                         choices = content.get(k).getChoices();
@@ -193,9 +197,11 @@ public class GameBegins extends AppCompatActivity {
                     imagename = content.get(k).getMainCharacterImage();
                     other.setImageResource(getResources().getIdentifier(imagename, "drawable", getPackageName()));
                     otherText.setText(content.get(k).getDialogue());
+                    other_name.setText(content.get(k).getMainCharacterName());
                     someChanges(otherText, content.get(k).getDialogue());
                     other.setVisibility(View.VISIBLE);
                     otherText.setVisibility(View.VISIBLE);
+                    other_name.setVisibility(View.VISIBLE);
 //                    other.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rightslide));
 
                     if (content.get(k).getIsQuestion() == true) {
@@ -222,11 +228,11 @@ public class GameBegins extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onPause() {
-//        rm.updateJson(1, k);
-//        super.onPause();
-//    }
+    @Override
+    public void onDestroy() {
+        rm.updateJson(1, k);
+        super.onDestroy();
+    }
 
     public void someChanges(final TypeWriter tw, final String dialogue) {
         tw.post(new Runnable() {
@@ -266,6 +272,8 @@ public class GameBegins extends AppCompatActivity {
         protagonist.setVisibility(View.GONE);
         narratorText.setVisibility(View.GONE);
         otherText.setVisibility(View.GONE);
+        other_name.setVisibility(View.GONE);
+        protagonist_name.setVisibility(View.GONE);
 //        other.clearAnimation();
 //        protagonist.clearAnimation();
         protagonistText.setVisibility(View.GONE);

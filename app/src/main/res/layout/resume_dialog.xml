@@ -1,82 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/rahul_story"
-        android:id="@+id/storyCover"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="20dp"
-        android:text="Rahul's Story"
-        android:textColor="@color/com_facebook_blue"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:id="@+id/storyHeader"/>
-
-    <ProgressBar
-        android:id="@+id/progress"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:progress="50"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"/>
-
-    <Button
-        android:id="@+id/continue_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:background="@drawable/rounded_corner"
-        android:drawableLeft="@drawable/play"
-        android:text="Resume" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/storyDescription"
-            android:text="This is the story description!!!!" />
-    </ScrollView>
-
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/restart_game"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="0dp"
-            android:background="@color/white"
-            android:drawableLeft="@drawable/replay" />
+        <ImageView
+            android:id="@+id/storyCover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/rahul_story" />
 
-        <Button
-            android:id="@+id/cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:text="Cancel"
-            android:textColor="@android:color/holo_red_dark" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <Button
+                    android:id="@+id/restart_game"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/loginbutton_selector"
+                    android:drawableLeft="@drawable/replay"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="Restart"
+                    android:textColor="@color/white" />
+
+
+                <Button
+                    android:id="@+id/continue_game"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/loginbutton_selector"
+                    android:drawableLeft="@drawable/play"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="Resume"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/storyHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="Rahul's Story"
+                android:textColor="@color/com_facebook_blue"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/character_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/character"
+                android:hint="Enter a name to play."
+                android:maxLines="1"
+                android:padding="15dp"
+                android:textColor="@color/black" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="20dp"
+                android:minHeight="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:progress="50" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
 
-</LinearLayout>
+</ScrollView>
