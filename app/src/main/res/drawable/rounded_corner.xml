@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <corners android:radius="20dp"/>
-    <solid android:color="#07000000"/>
-    <stroke android:color="@android:color/black" android:width="1dp"/>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-</shape>
+<!-- When item pressed this item will be triggered -->
+<item android:state_pressed="true"><shape android:shape="rectangle">
+    <corners android:radius="20dp" />
+
+    <solid android:color="@android:color/holo_green_dark" />
+</shape></item>
+
+<!-- By default the background will be this item -->
+<item><shape android:shape="rectangle">
+    <corners android:radius="20dp" />
+
+    <solid android:color="@color/colorSplash" />
+</shape></item>
+
+</selector>

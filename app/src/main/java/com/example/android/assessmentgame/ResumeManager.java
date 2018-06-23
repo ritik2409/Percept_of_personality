@@ -1,6 +1,7 @@
 package com.example.android.assessmentgame;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.SparseIntArray;
 
@@ -57,15 +58,15 @@ public class ResumeManager {
     }
 
 
-    public void updateJson(int i, int i1) {
+    public void updateJson(int storyId, int sceneId) {
         int j;
         Gson gson = new Gson();
         String json = preferences.getString("MyData", "not found!");
         GameResumeParser gameResumeParser = gson.fromJson(json, GameResumeParser.class);
         ArrayList<GameProgress> gameProgresses = gameResumeParser.getValues();
         for (j = 0; j < gameProgresses.size(); j++) {
-            if (gameProgresses.get(j).getStoryId() == i) {
-                gameProgresses.get(j).setSceneId(i1);
+            if (gameProgresses.get(j).getStoryId() == storyId) {
+                gameProgresses.get(j).setSceneId(sceneId);
                 break;
             }
         }
@@ -98,8 +99,21 @@ public class ResumeManager {
     }
 
     public void clearAllGame() {
+        // Clearing all data from Shared Preferences
         editor.clear();
         editor.commit();
+
+        // After logout redirect user to Loing Activity
+        Intent i = new Intent(context, GameDetails.class);
+        // Closing all the Activities
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        // Add new Flag to start new Activity
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // Staring Login Activity
+        context.startActivity(i);
+
     }
 
     public void updateBackground(int storyId, int resourceId) {
@@ -175,20 +189,24 @@ public class ResumeManager {
 
     }
 
-    public void updateGameProgress(int storyId, int progress) {
+    public void updateGameProgress(int storyId, int progress, int sceneId) {
         int j;
         Gson gson = new Gson();
         String json = myData();
+//        updateJson(storyId,sceneId);
         GameResumeParser gameResumeParser = gson.fromJson(json, GameResumeParser.class);
         ArrayList<GameProgress> gameProgresses = gameResumeParser.getValues();
         for (j = 0; j < gameProgresses.size(); j++) {
             if (gameProgresses.get(j).getStoryId() == storyId) {
-                gameProgresses.get(j).setProgress(progress);
-                break;
+                {
+                    gameProgresses.get(j).setSceneId(sceneId);
+                    gameProgresses.get(j).setProgress(progress);
+                    break;
+                }
             }
         }
-        String updatedJson = gson.toJson(gameResumeParser);
-        editor.putString("MyData", updatedJson);
+        String jsonstring = gson.toJson(gameResumeParser);
+        editor.putString("MyData", jsonstring);
         editor.commit();
 
 
@@ -198,6 +216,7 @@ public class ResumeManager {
         int j;
         Gson gson = new Gson();
         String json = myData();
+
         GameResumeParser gameResumeParser = gson.fromJson(json, GameResumeParser.class);
         ArrayList<GameProgress> gameProgresses = gameResumeParser.getValues();
         for (j = 0; j < gameProgresses.size(); j++) {

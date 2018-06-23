@@ -84,8 +84,8 @@
                 android:id="@+id/pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/password"
-                android:drawableStart="@drawable/password"
+                android:drawableLeft="@drawable/key"
+                android:drawableStart="@drawable/key"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:singleLine="true"
@@ -163,7 +163,7 @@
             android:layout_marginTop="10dp"
             android:clickable="true"
             android:onClick="tologin"
-            android:text="Already have an acount? Log in"
+            android:text="@string/gotoLogin"
             android:textColor="@color/black" />
 
     </LinearLayout>

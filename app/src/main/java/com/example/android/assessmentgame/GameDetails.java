@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -29,7 +30,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GameDetails extends AppCompatActivity {
+public class GameDetails extends NavigationDrawer {
 
     RecyclerView rv;
     ChooseGameAdapter adapter;
@@ -55,14 +56,17 @@ public class GameDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_details);
+//        FrameLayout frameLayout = findViewById(R.id.framelayout);
+//        getLayoutInflater().inflate(R.layout.activity_game_begins,frameLayout);
+//        super.onCreateDrawer(R.layout.activity_game_details);
+        super.onCreateDrawer(R.layout.activity_game_details);
         progressBars = new ArrayList<>();
 //        loadGameProgress();
-
+        setTitle("Choose a Story");
 
         rv = (RecyclerView) findViewById(R.id.recycler_view);
         convert();
-        manager = new ResumeManager(getApplicationContext());
+        manager = new ResumeManager(this);
         if (!manager.isGameStarted())
             jsonInitialise();
 
@@ -91,19 +95,22 @@ public class GameDetails extends AppCompatActivity {
         TextView textView = dialog.findViewById(R.id.storyHeader);
         textView.setText(storyHeader[position]);
         final EditText editText = dialog.findViewById(R.id.character_name);
+        ProgressBar progressBar = dialog.findViewById(R.id.progress);
+        TextView progressValue = dialog.findViewById(R.id.progressValue);
+
         dialog.findViewById(R.id.continue_game).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (manager.getSceneId(position + 1) == 0) {
                     if (!TextUtils.isEmpty(editText.getText().toString())) {
-                        manager.updateProtagonist(position, editText.getText().toString());
+                        manager.updateProtagonist(position + 1, editText.getText().toString());
                         startGame(position);
                     } else
-                        Toast.makeText(GameDetails.this, "Protagonist Name can't be empty!", Toast.LENGTH_SHORT).show();
-                }
+                        Toast.makeText(GameDetails.this, "Protagonist Name can't be blank!", Toast.LENGTH_SHORT).show();
 
-                if (manager.getProtagonist(position) != "No Name")
-                    startGame(position);
+                }
+                else startGame(position);
+
 
                 dialog.dismiss();
             }
@@ -113,22 +120,30 @@ public class GameDetails extends AppCompatActivity {
             dialog.findViewById(R.id.restart_game).setVisibility(View.GONE);
             TextView textView1 = dialog.findViewById(R.id.continue_game);
             textView1.setText("Play");
-        } else editText.setVisibility(View.GONE);
+            progressBar.setVisibility(View.GONE);
+            progressValue.setVisibility(View.GONE);
+        } else {
+            editText.setVisibility(View.GONE);
+            progressBar.setProgress(manager.getGameProgress(position + 1));
+            progressValue.setText(String.valueOf(manager.getGameProgress(position + 1)) + "%");
+        }
+
+        if (manager.getSceneId(position + 1) + 1 == story.get(position).getContent().size()) {
+            progressValue.setText("Completed");
+            dialog.findViewById(R.id.continue_game).setVisibility(View.GONE);
+            TextView textView2 = dialog.findViewById(R.id.restart_game);
+            textView2.setText("Play Again");
+
+        }
 
         dialog.findViewById(R.id.restart_game).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                manager.clearGameProgress(1);
+                manager.clearGameProgress(position + 1);
                 startGame(position);
                 dialog.dismiss();
             }
         });
-
-
-        int progress = (manager.getSceneId(position + 1) / story.get(position).getContent().size()) * 100;
-
-        ProgressBar progressBar = dialog.findViewById(R.id.progress);
-        progressBar.setProgress(progress);
 
 
         dialog.show();
@@ -212,7 +227,7 @@ public class GameDetails extends AppCompatActivity {
         GameProgress gameProgress;
 
         for (int i = 0; i < story.size(); i++) {
-            gameProgress = new GameProgress(story.get(i).getStoryId(), 0, 50, R.drawable.living_room, "Protagonist");
+            gameProgress = new GameProgress(story.get(i).getStoryId(), 0, 0, R.drawable.living_room, "Protagonist", story.get(i).getStoryTitle());
             arrayList.add(gameProgress);
 
         }

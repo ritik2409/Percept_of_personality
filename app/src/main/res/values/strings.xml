@@ -25,4 +25,15 @@
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
+    <string name="gotoSignUp">Don\'t have an account? <u>Sign up</u></string>
+    <string name="gotoLogin">Already have an acount? <u>Log in</u></string>
+    <string name="skip"><u>Skip Login</u></string>
+    <string name="Open">NavBar</string>
+    <string name="Close">Close</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="logout">Logout</string>
+    <string name="settings">Settings</string>
+    <string name="my_account">My Account</string>
+    <string name="title_activity_hamburger">Hamburger</string>
 </resources>

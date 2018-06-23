@@ -1,5 +1,6 @@
 package com.example.android.assessmentgame;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -38,8 +39,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class GameBegins extends AppCompatActivity {
+public class GameBegins extends NavigationDrawer {
     RelativeLayout root;
+    RelativeLayout rl1, rl2;
     ImageView other;
     TypeWriter otherText;
     ImageView protagonist;
@@ -51,7 +53,7 @@ public class GameBegins extends AppCompatActivity {
     int resourceId;
     String imagename;
     ArrayList<Content> content = new ArrayList<Content>();
-    int previous_id;
+    int previous_id = 0;
 //    Button play,restart;
 
     ArrayList<Story> story = new ArrayList<>();
@@ -67,20 +69,22 @@ public class GameBegins extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_game_begins);
+        super.onCreateDrawer(R.layout.activity_game_begins);
 //        getActionBar().hide();
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Intent intent = getIntent();
         value = intent.getIntExtra("Scene_Id", 0);
         dataFile = intent.getStringExtra("Json_data");
-        rm = new ResumeManager(getApplicationContext());
+        rm = new ResumeManager(this);
         convert();
 
 
         root = (RelativeLayout) findViewById(R.id.root);
+        rl1 = (RelativeLayout) findViewById(R.id.rl1);
+        rl2 = (RelativeLayout) findViewById(R.id.rl2);
         other = (ImageView) findViewById(R.id.other_characters);
         otherText = (TypeWriter) findViewById(R.id.other_text);
         protagonist = (ImageView) findViewById(R.id.protagonist);
@@ -153,6 +157,7 @@ public class GameBegins extends AppCompatActivity {
 //    }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     public void activity() {
         removeall();
         root.setOnTouchListener(new View.OnTouchListener() {
@@ -177,18 +182,25 @@ public class GameBegins extends AppCompatActivity {
                     protagonist.setImageResource(resourceId);
 //                    protagonist.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.leftslide));
                     protagonistText.setText(content.get(k).getDialogue());
-                    protagonist_name.setText(rm.getProtagonist(value+1));
+                    protagonist_name.setText(rm.getProtagonist(value + 1));
                     someChanges(protagonistText, content.get(k).getDialogue());
                     protagonistText.setVisibility(View.VISIBLE);
                     protagonist.setVisibility(View.VISIBLE);
                     protagonist_name.setVisibility(View.VISIBLE);
-                    Log.d("Dialogue is:", content.get(k).getDialogue());
+//                    LinearLayout.LayoutParams relativeParams = (LinearLayout.LayoutParams)rl1.getLayoutParams();
+//                    relativeParams.setMargins(0, 0, 0, 80);  // left, top, right, bottom
+//                    rl1.setLayoutParams(relativeParams);
+//                    Log.d("Dialogue is:", content.get(k).getDialogue());
                     if (content.get(k).getIsQuestion() == true) {
                         choices = content.get(k).getChoices();
                         pchoice1.setVisibility(View.VISIBLE);
                         pchoice2.setVisibility(View.VISIBLE);
                         pchoice1.animateText(choices[0]);
                         pchoice2.animateText(choices[1]);
+//                        relativeParams = (LinearLayout.LayoutParams) rl2.getLayoutParams();
+//                        relativeParams.setMargins(0, 0, 0, 0);  // left, top, right, bottom
+//                        rl2.setLayoutParams(relativeParams);
+
                     }
 
                 }
@@ -202,6 +214,10 @@ public class GameBegins extends AppCompatActivity {
                     other.setVisibility(View.VISIBLE);
                     otherText.setVisibility(View.VISIBLE);
                     other_name.setVisibility(View.VISIBLE);
+//                    LinearLayout.LayoutParams relativeParams = (LinearLayout.LayoutParams)rl2.getLayoutParams();
+//                    relativeParams.setMargins(0, 0, 0, 50);  // left, top, right, bottom
+//                    rl2.setLayoutParams(relativeParams);
+
 //                    other.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rightslide));
 
                     if (content.get(k).getIsQuestion() == true) {
@@ -210,6 +226,10 @@ public class GameBegins extends AppCompatActivity {
                         ochoice2.animateText(choices[1]);
                         ochoice2.setVisibility(View.VISIBLE);
                         ochoice1.setVisibility(View.VISIBLE);
+//                        relativeParams = (LinearLayout.LayoutParams) rl2.getLayoutParams();
+//                        relativeParams.setMargins(0, 0, 0, 0);  // left, top, right, bottom
+//                        rl2.setLayoutParams(relativeParams);
+
                     }
 
 
@@ -219,8 +239,7 @@ public class GameBegins extends AppCompatActivity {
                     previous_id = k;
                     k = content.get(k).getNextId() - 1;
                 }
-                rm.updateJson(1, k);
-
+                update();
 
                 return false;
             }
@@ -228,11 +247,20 @@ public class GameBegins extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onDestroy() {
-        rm.updateJson(1, k);
-        super.onDestroy();
+    public void update() {
+        int size = content.size();
+        int current = previous_id + 1;
+        int progress = (int) (((float) current / size) * 100);
+
+        rm.updateGameProgress(value + 1, progress, previous_id);
+
     }
+
+//    @Override
+//    public void onDestroy() {
+//        update();
+//        super.onDestroy();
+//    }
 
     public void someChanges(final TypeWriter tw, final String dialogue) {
         tw.post(new Runnable() {

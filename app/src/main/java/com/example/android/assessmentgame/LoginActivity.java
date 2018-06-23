@@ -21,8 +21,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Intent i = getIntent();
-        Integer value = i.getIntExtra("Scene_Id",0);
+//        Intent i = getIntent();
+//        Integer value = i.getIntExtra("Scene_Id",0);
 
 //        email = (EditText) findViewById(R.id.emailId);
 //        password = (EditText) findViewById(R.id.passw);

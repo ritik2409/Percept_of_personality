@@ -1,44 +1,35 @@
 package com.example.android.assessmentgame;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
-import android.speech.tts.TextToSpeech;
+import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.ViewTreeObserver;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
-import java.util.Locale;
-
-public class DummyActivity extends AppCompatActivity {
-//    int i = 0;
+public class DummyActivity extends NavigationDrawer {
+    //    int i = 0;
 //    TextView textView;
 //    ResumeManager resumeManager;
 //    int k;
     int value;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dummy);
-        final Intent intent = getIntent();
-        value = intent.getIntExtra("Scene_Id", 0);
-        TextView textView = (TextView) findViewById(R.id.text4);
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
-        if(linearLayout.getBackground()==null)
-            textView.setText("No Background");
-        else textView.setText("Background is white");
+        super.onCreateDrawer(R.layout.fragment_contact);
 
- }
+
+
+    }
+}
 
 
 //        typeWriter.setText(++0++"0+Hey what the hell do you want to do with my name. Just go back! You understand you idiot.");
@@ -85,7 +76,7 @@ public class DummyActivity extends AppCompatActivity {
 //        });
 //
 
-    }
+
 
 //    @Override
 //    protected void onPause() {
@@ -103,7 +94,7 @@ public class DummyActivity extends AppCompatActivity {
 //
 //        super.onDestroy();
 //    }
-    //    public static String getEllipsisText(TextView textView) {
+//    public static String getEllipsisText(TextView textView) {
 //        // test that we have a textview and it has text
 //        if (textView==null || TextUtils.isEmpty(textView.getText())) return null;
 //        Layout l = textView.getLayout();

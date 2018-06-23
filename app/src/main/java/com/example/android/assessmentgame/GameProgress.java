@@ -11,13 +11,23 @@ public class GameProgress {
     int progress;
     int updatedBackground;
     String protagonistName;
+    String storyTitle;
 
-    public GameProgress(int sceneId, int storyId, int progress, int updatedBackground, String protagonistName) {
+    public GameProgress(int storyId, int sceneId, int progress, int updatedBackground, String protagonistName, String storyTitle) {
         this.sceneId = sceneId;
         this.storyId = storyId;
         this.progress = progress;
         this.updatedBackground = updatedBackground;
         this.protagonistName = protagonistName;
+        this.storyTitle = storyTitle;
+    }
+
+    public String getStoryTitle() {
+        return storyTitle;
+    }
+
+    public void setStoryTitle(String storyTitle) {
+        this.storyTitle = storyTitle;
     }
 
 
