@@ -1,8 +1,10 @@
 package com.moodcafe.assessmentgame;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 
 import com.facebook.login.LoginManager;
@@ -32,10 +34,14 @@ public class SessionManager {
     int PRIVATE_MODE = 0;
 
     // Sharedpref file name
-    private static final String PREF_NAME = "myPref";
+    private static final String PREF_NAME = "session";
 
     // All Shared Preferences Keys
     private static final String IS_LOGIN = "IsLoggedIn";
+
+    //uniqueId
+    public static final String KEY_UNIQUEID = "UniqueID";
+
 
     //firstname
     public static final String KEY_FIRSTNAME = "firstname";
@@ -46,11 +52,17 @@ public class SessionManager {
     // Email address (make variable public to access from outside)
     public static final String KEY_EMAIL = "email";
 
+    // fb login type
     public static final String KEY_FBLOG = "fblog";
 
+    // google login type
     public static final String KEY_GOOGLELOG = "googlelog";
 
+    // email login type
     public static final String KEY_EMAILLOG = "emaillog";
+
+    //skip login type
+    public static final String KEY_SKIPLOG = "skiplog";
 
     // Constructor
     public SessionManager(Context context) {
@@ -84,28 +96,12 @@ public class SessionManager {
         editor.commit();
     }
 
-    /**
-     * Check login method wil check user login status
-     * If false it will redirect user to login page
-     * Else won't do anything
-     */
-    public void checkLogin() {
-        // Check login status
-        if (!this.isLoggedIn()) {
-            // user is not logged in redirect him to Login Activity
-            Intent i = new Intent(context, LoginActivity.class);
-            // Closing all the Activities
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-            // Add new Flag to start new Activity
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-
-            // Starting Login Activity
-            context.startActivity(i);
-
-
-        }
+    //handle login skip part
+    public void skipLogin() {
+        String android_id = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+        editor.putString(KEY_UNIQUEID, android_id);
+        editor.putBoolean(KEY_SKIPLOG, true);
+        editor.commit();
 
     }
 
@@ -130,7 +126,7 @@ public class SessionManager {
     }
 
     /**
-     * Clear session details
+     * logout
      */
     public void logoutUser() {
 
@@ -148,47 +144,44 @@ public class SessionManager {
             Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
                 @Override
                 public void onResult(@NonNull Status status) {
-                    // Clearing all data from Shared Preferences
-                    editor.clear();
-                    editor.commit();
-                    gotoLogin();
+                    editor.putBoolean(IS_LOGIN, false);
                 }
             });
         } else if (pref.getBoolean(KEY_FBLOG, false) == true) {
             LoginManager.getInstance().logOut();
-            // Clearing all data from Shared Preferences
-            editor.clear();
-            editor.commit();
-            gotoLogin();
-        } else {// Clearing all data from Shared Preferences
-            editor.clear();
-            editor.commit();
-        }
+            editor.putBoolean(IS_LOGIN, false);
+        } else if (pref.getBoolean(KEY_EMAILLOG, false) == true)
+            editor.putBoolean(IS_LOGIN, false);
+        else editor.putBoolean(KEY_SKIPLOG, false);
+        gotoLogin();
 
 
     }
 
 
-    private void gotoLogin() {
-        // After logout redirect user to Loing Activity
-        Intent i = new Intent(context, LoginActivity.class);
-        // Closing all the Activities
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    public void gotoLogin() {
 
-        // Add new Flag to start new Activity
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // After logout redirect user to Loing Activity
+      context.getSharedPreferences(PREF_NAME,0).edit().clear().commit();
+        Intent i = new Intent(context, LoginActivity.class);
 
         // Staring Login Activity
         context.startActivity(i);
+        ((Activity) context).finish();
+
 
     }
+
     /*
      * Quick check for login
      * */
     // Get Login State
 
-
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);
+    }
+
+    public boolean isLoginSkipped() {
+        return pref.getBoolean(KEY_SKIPLOG, false);
     }
 }

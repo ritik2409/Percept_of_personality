@@ -35,12 +35,29 @@ public class MainActivity extends NavigationDrawer {
     String dataFile;
     ResumeManager manager;
     ProgressDialog progressDialog;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.onCreateDrawer(R.layout.activity_game_details);
-        setTitle("Choose a Character");
+
+        sessionManager = new SessionManager(this);
+        /**
+         * Check login status
+         * If false it will redirect user to login page
+         * Else won't do anything
+         */
+        if (!((sessionManager.isLoggedIn()) ||(sessionManager.isLoginSkipped())) ) {
+            // user is not logged in redirect him to Login Activity
+            Intent i = new Intent(this, LoginActivity.class);
+            // Starting Login Activity
+            this.startActivity(i);
+            finish();
+
+
+        }
+
 
         progressDialog = new ProgressDialog(this);
         rv = (RecyclerView) findViewById(R.id.recycler_view);

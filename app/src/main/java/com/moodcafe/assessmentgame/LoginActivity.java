@@ -1,6 +1,9 @@
 package com.moodcafe.assessmentgame;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -63,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         emailtext = (EditText) findViewById(R.id.emailtext);
         passwtext = (EditText) findViewById(R.id.passText);
         login = (Button) findViewById(R.id.letsgo);
@@ -81,6 +85,10 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!IsOnline.connectedToInternet(getApplicationContext())) {
+                    showDialog();
+                }
+
                 progressDialog.setMessage("Logging...");
                 //checking the empty fields
                 if (checkEmptyField()) {
@@ -141,8 +149,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
 
-
-
             }
         });
 
@@ -163,8 +169,12 @@ public class LoginActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-                startActivityForResult(intent, 9001);
+                if (!IsOnline.connectedToInternet(getApplicationContext())) {
+                    showDialog();
+                } else {
+                    Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                    startActivityForResult(intent, 9001);
+                }
             }
         });
 
@@ -206,6 +216,9 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onError(FacebookException error) {
+                if (!IsOnline.connectedToInternet(getApplicationContext())) {
+                    showDialog();
+                }
                 Toast.makeText(LoginActivity.this, "Error logging!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -219,6 +232,24 @@ public class LoginActivity extends AppCompatActivity {
         sessionManager.createLoginSession(fname, lname, email, type);
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
+
+    }
+
+    public void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("No Interet Connection")
+                .setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (IsOnline.connectedToInternet(getApplicationContext())) {
+                            dialogInterface.dismiss();
+                        } else showDialog();
+                    }
+                })
+                .create()
+                .show();
+
 
     }
 
@@ -273,6 +304,7 @@ public class LoginActivity extends AppCompatActivity {
         return true;
 
     }
+
     //to start SignupActivity activity when user clicks on SignupActivity hyperlink
     public void tosignup(View view) {
         Intent intent = new Intent(this, SignupActivity.class);
@@ -281,8 +313,11 @@ public class LoginActivity extends AppCompatActivity {
 
     //function called when user skips the login screen
     public void loginSkipped(View view) {
+
+        sessionManager.skipLogin();
         Intent it = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(it);
+        finish();
 
     }
 }
