@@ -1,6 +1,8 @@
 package com.moodcafe.assessmentgame;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -58,6 +60,9 @@ public class SignupActivity extends AppCompatActivity {
         sign_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!IsOnline.connectedToInternet(getApplicationContext())) {
+                    showDialog();
+                }
                 progressDialog.setMessage("Registering...");
                 if (checkEmptyFields()) {
                     progressDialog.show();
@@ -80,7 +85,7 @@ public class SignupActivity extends AppCompatActivity {
                                 public void onResponse(JSONObject response) {
                                     try {
                                         Log.d("message is:", response.getString("message"));
-                                        sessionManager.createLoginSession(fname.getText().toString(),lname.getText().toString(),emailId.getText().toString(),SessionManager.KEY_EMAILLOG);
+                                        sessionManager.createLoginSession(fname.getText().toString(), lname.getText().toString(), emailId.getText().toString(), SessionManager.KEY_EMAILLOG);
                                         Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                                         startActivity(intent);
                                         progressDialog.cancel();
@@ -120,6 +125,24 @@ public class SignupActivity extends AppCompatActivity {
             }
 
         });
+
+
+    }
+
+    //dialog box to show no internet connection
+    public void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("No Interet Connection")
+                .setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (IsOnline.connectedToInternet(getApplicationContext())) {
+                            dialogInterface.dismiss();
+                        } else showDialog();
+                    }
+                })
+                .create()
+                .show();
 
 
     }

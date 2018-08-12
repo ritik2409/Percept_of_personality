@@ -236,6 +236,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    //dialog box to show no internet connection
     public void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("No Interet Connection")
