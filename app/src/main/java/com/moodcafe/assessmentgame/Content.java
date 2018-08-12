@@ -1,9 +1,7 @@
-package com.example.android.assessmentgame;
+package com.moodcafe.assessmentgame;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.ArrayList;
 
 /**
  * Created by ritik on 5/28/2018.
@@ -52,6 +50,11 @@ public class Content {
     @Expose
     private boolean isQuestion;
 
+
+    @SerializedName("questionType")
+    @Expose
+    private int questionType;
+
     @SerializedName("choices")
     @Expose
     private String[] choices;
@@ -66,7 +69,20 @@ public class Content {
 
     @SerializedName("goWithTwo")
     @Expose
-    private  int goWithTwo;
+    private int goWithTwo;
+
+    @SerializedName("questionId")
+    @Expose
+    private String questionId;
+
+    public int getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(int questionType) {
+        this.questionType = questionType;
+    }
+
 
     public boolean getIsRight() {
         return isRight;
@@ -182,6 +198,14 @@ public class Content {
 
     public void setGoWithTwo(int goWithTwo) {
         this.goWithTwo = goWithTwo;
+    }
+
+    public String getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(String questionId) {
+        this.questionId = questionId;
     }
 
 

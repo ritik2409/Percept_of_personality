@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.android.assessmentgame.GameDetails">
+    tools:context="com.moodcafe.assessmentgame.MainActivity">
 
     <!--<TextView-->
         <!--android:layout_width="match_parent"-->
@@ -17,14 +17,17 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        />
 
 
 </LinearLayout>
 
 
-    <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:background="#007C8C"--><!--android:fillViewport="true"--><!--tools:context="com.example.android.assessmentgame.GameDetails">-->
+    <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:background="#007C8C"--><!--android:fillViewport="true"--><!--tools:contecom.example.assessmentgamegMainActivityails">-->
 
     <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:orientation="vertical">-->
 

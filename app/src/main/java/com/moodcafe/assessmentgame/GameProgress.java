@@ -1,4 +1,4 @@
-package com.example.android.assessmentgame;
+package com.moodcafe.assessmentgame;
 
 /**
  * Created by ritik on 6/15/2018.

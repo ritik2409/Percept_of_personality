@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Assessment Game</string>
+    <string name="app_name">Percept of Personality</string>
     <string-array name="gender">
         <item>Select Gender:-</item>
         <item>Male</item>
@@ -26,14 +26,16 @@
 
     <string name="action_settings">Settings</string>
     <string name="gotoSignUp">Don\'t have an account? <u>Sign up</u></string>
-    <string name="gotoLogin">Already have an acount? <u>Log in</u></string>
+    <string name="gotoLogin">Already have an account? <u>Log in</u></string>
     <string name="skip"><u>Skip Login</u></string>
     <string name="Open">NavBar</string>
     <string name="Close">Close</string>
     <string name="contact_us">Contact Us</string>
-    <string name="rate_us">Rate Us</string>
+    <string name="rate_us">Feedback</string>
     <string name="logout">Logout</string>
-    <string name="settings">Settings</string>
-    <string name="my_account">My Account</string>
     <string name="title_activity_hamburger">Hamburger</string>
+    <string name="my_account">My Account</string>
+    <string name="settings">Settings</string>
+
+    <string name="facebook_app_id">646848465707856</string>
 </resources>

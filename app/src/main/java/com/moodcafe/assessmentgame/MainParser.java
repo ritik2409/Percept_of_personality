@@ -1,14 +1,9 @@
-package com.example.android.assessmentgame;
-
-import android.widget.ImageView;
-import android.widget.TextView;
+package com.moodcafe.assessmentgame;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by ritik on 5/21/2018.

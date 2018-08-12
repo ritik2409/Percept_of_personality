@@ -1,14 +1,11 @@
-package com.example.android.assessmentgame;
+package com.moodcafe.assessmentgame;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.SparseIntArray;
 
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by ritik on 6/13/2018.
@@ -98,23 +95,23 @@ public class ResumeManager {
 
     }
 
-    public void clearAllGame() {
-        // Clearing all data from Shared Preferences
-        editor.clear();
-        editor.commit();
-
-        // After logout redirect user to Loing Activity
-        Intent i = new Intent(context, GameDetails.class);
-        // Closing all the Activities
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-        // Add new Flag to start new Activity
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        // Staring Login Activity
-        context.startActivity(i);
-
-    }
+//    public void clearAllGame() {
+//        // Clearing all data from Shared Preferences
+//        editor.clear();
+//        editor.commit();
+//
+//        // After logout redirect user to Loing Activity
+//        Intent i = new Intent(context, MainActivity.class);
+//        // Closing all the Activities
+//        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//        // Add new Flag to start new Activity
+//        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//
+//        // Staring Login Activity
+//        context.startActivity(i);
+//
+//    }
 
     public void updateBackground(int storyId, int resourceId) {
         int j;

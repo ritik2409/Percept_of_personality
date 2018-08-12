@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "540466130457",
-    "firebase_url": "https://assessment-game-e6744.firebaseio.com",
-    "project_id": "assessment-game-e6744",
-    "storage_bucket": "assessment-game-e6744.appspot.com"
+    "project_number": "730736190443",
+    "firebase_url": "https://percept-of-perso-1531566778305.firebaseio.com",
+    "project_id": "percept-of-perso-1531566778305",
+    "storage_bucket": "percept-of-perso-1531566778305.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:540466130457:android:9837886809941b4e",
+        "mobilesdk_app_id": "1:730736190443:android:b8172df769586afa",
         "android_client_info": {
-          "package_name": "com.example.android.assessmentgame"
+          "package_name": "com.moodcafe.assessmentgame"
         }
       },
       "oauth_client": [
         {
-          "client_id": "540466130457-quqnj8ag6qn583m8tsh5t2cibdks6qdu.apps.googleusercontent.com",
+          "client_id": "730736190443-brj2r92a0i193fsl9u998dqss5v4ehni.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.android.assessmentgame",
-            "certificate_hash": "7bc2d6db3f82501e7fa5d94c84cf07a20e97ccf1"
+            "package_name": "com.moodcafe.assessmentgame",
+            "certificate_hash": "40920961f2f4e19f87e0cf4114ce4a342aa0cfbc"
           }
         },
         {
-          "client_id": "540466130457-522hq4rhu1hlbora43i9nisnmcvjiq6k.apps.googleusercontent.com",
+          "client_id": "730736190443-4csh0l69r9j23d8v9obdv8c9e8mmaaia.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAGIvnczy4DFNERaje0gY0zQMeLDyCT4xE"
+          "current_key": "AIzaSyB3OYQeO83Z1xKmY-gy5KODPzcLaeXAUY4"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "540466130457-522hq4rhu1hlbora43i9nisnmcvjiq6k.apps.googleusercontent.com",
+              "client_id": "730736190443-4csh0l69r9j23d8v9obdv8c9e8mmaaia.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

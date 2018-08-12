@@ -4,20 +4,33 @@ android {
     compileSdkVersion 27
     buildToolsVersion "27.0.3"
     defaultConfig {
-        applicationId "com.example.android.assessmentgame"
+        applicationId "com.moodcafe.assessmentgame"
         minSdkVersion 19
-
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("C:\\Users\\defaultuser0\\.android\\android.jks")
+            storePassword "keystorepop"
+            keyAlias "key0"
+            keyPassword "keystorepop"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+repositories {
+    mavenCentral();
 }
 
 dependencies {
@@ -31,6 +44,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.android.volley:volley:1.1.0'
     compile 'com.android.support:cardview-v7:27.1.1'
+    compile 'com.google.android.gms:play-services-auth:9.6.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

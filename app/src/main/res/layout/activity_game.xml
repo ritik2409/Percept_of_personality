@@ -6,7 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/living_room"
-    tools:context="com.example.android.assessmentgame.GameBegins">
+    tools:context="com.moodcafe.assessmentgame.GameActivity">
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#00ffffff"
+        android:src="@drawable/arrow_back" />
 
     <ImageView
         android:id="@+id/protagonist"
@@ -18,27 +26,29 @@
         android:layout_marginEnd="380dp"
         android:layout_marginRight="380dp"
         android:layout_marginTop="49dp"
-        android:src="@drawable/rahul"
-        android:visibility="visible" />
+        android:src="@drawable/rahulc"
+        android:visibility="gone" />
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="230dp"
-        android:layout_marginStart="230dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="220dp"
+        android:layout_marginStart="220dp"
         android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/rl1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_above="@+id/pchoice1"
+            android:visibility="visible">
 
 
-            <com.example.android.assessmentgame.TypeWriter
+            <com.moodcafe.assessmentgame.TypeWriter
                 android:id="@+id/protagonist_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,7 +56,7 @@
                 android:text="nklnkjjbjbnklnknknjkb jbbjkbjkkjbjjkb weweg wg34g34dfbt rbtrbtrb rg gtrrtb rbr rb rt rt   r r brt  r r r r r r r r r r r r"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/protagonist_name"
@@ -57,17 +67,17 @@
                 android:text="Main"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:visibility="visible" />
+                android:visibility="gone" />
+
 
         </RelativeLayout>
 
-
-        <com.example.android.assessmentgame.TypeWriter
+        <com.moodcafe.assessmentgame.TypeWriter
             android:id="@+id/pchoice1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/rl1"
-            android:layout_alignRight="@+id/rl1"
+            android:layout_above="@+id/pchoice2"
+            android:layout_alignStart="@+id/rl1"
             android:layout_marginBottom="4dp"
             android:background="@drawable/rounded_corner"
             android:drawableEnd="@drawable/arrow"
@@ -77,28 +87,28 @@
             android:text="Hey what fdg,m g erglkrew gg r KJD WQDWJewge rgre geg ggr e gege"
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
-        <com.example.android.assessmentgame.TypeWriter
+        <com.moodcafe.assessmentgame.TypeWriter
             android:id="@+id/pchoice2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/pchoice1"
-            android:layout_alignRight="@+id/pchoice1"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/pchoice1"
             android:background="@drawable/rounded_corner"
             android:drawableEnd="@drawable/arrow"
             android:drawableRight="@drawable/arrow"
             android:onClick="action"
-            android:padding="5dp"
+            android:padding="3dp"
             android:text="Hey whats upb jh"
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:visibility="visible" />
+            android:visibility="gone" />
+
 
     </LinearLayout>
 
-
-    <com.example.android.assessmentgame.TypeWriter
+    <com.moodcafe.assessmentgame.TypeWriter
         android:id="@+id/narrator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -123,23 +133,28 @@
         android:layout_marginLeft="380dp"
         android:layout_marginStart="380dp"
         android:layout_marginTop="49dp"
-        android:src="@drawable/smitha"
-        android:visibility="gone" />
+        android:src="@drawable/sumit"
+        android:visibility="visible" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="240dp"
-        android:layout_marginRight="240dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="220dp"
+        android:layout_marginRight="220dp"
         android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/rl2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ochoice1"
+            android:visibility="visible"
+            android:layout_marginBottom="70dp">
 
-            <com.example.android.assessmentgame.TypeWriter
+            <com.moodcafe.assessmentgame.TypeWriter
                 android:id="@+id/other_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -147,7 +162,7 @@
                 android:text="nklnkjjbjbnklnknknjkbjbbjkbjkkjbjjkb"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/other_name"
@@ -157,19 +172,20 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginEnd="40dp"
                 android:layout_marginRight="40dp"
-                android:text="Main gupta"
+                android:text="Main6yu"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:visibility="gone" />
+                android:visibility="visible" />
         </RelativeLayout>
 
 
-        <com.example.android.assessmentgame.TypeWriter
+        <com.moodcafe.assessmentgame.TypeWriter
             android:id="@+id/ochoice1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/rl2"
-            android:layout_alignRight="@+id/rl2"
+            android:layout_above="@+id/ochoice2"
+            android:layout_alignEnd="@+id/rl2"
+            android:layout_alignStart="@+id/rl2"
             android:layout_marginBottom="4dp"
             android:background="@drawable/rounded_corner"
             android:drawableEnd="@drawable/arrow"
@@ -181,20 +197,23 @@
             android:textSize="15sp"
             android:visibility="gone" />
 
-        <com.example.android.assessmentgame.TypeWriter
+        <com.moodcafe.assessmentgame.TypeWriter
             android:id="@+id/ochoice2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/ochoice1"
-            android:layout_alignRight="@+id/ochoice1"
+            android:layout_alignEnd="@+id/rl2"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/rl2"
             android:background="@drawable/rounded_corner"
             android:drawableEnd="@drawable/arrow"
             android:drawableRight="@drawable/arrow"
             android:onClick="action"
+            android:padding="3dp"
             android:text="Hey whats up"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:visibility="gone" />
+
 
     </LinearLayout>
 

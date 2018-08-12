@@ -1,10 +1,9 @@
-package com.example.android.assessmentgame;
+package com.moodcafe.assessmentgame;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by ritik on 5/28/2018.
@@ -27,6 +26,19 @@ public class Story {
     @SerializedName("storyCover")
     @Expose
     private String storyCover;
+
+    @SerializedName("description")
+    @Expose
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 
     public ArrayList<Content> getContent() {
         return content;

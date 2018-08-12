@@ -1,4 +1,4 @@
-package com.example.android.assessmentgame;
+package com.moodcafe.assessmentgame;
 
 
 import java.util.ArrayList;
