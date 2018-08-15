@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/clear"
+            android:title="Clear current progress" />
+        <item
+            android:id="@+id/changename"
+            android:title="Change protagonist name" />
+        <item
+            android:id="@+id/result_view"
+            android:title="View Result" />
+
+    </group>
+
+</menu>

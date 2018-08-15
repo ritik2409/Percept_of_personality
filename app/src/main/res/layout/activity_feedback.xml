@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.moodcafe.assessmentgame.FeedbackActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:text="Feedback"
+        android:textColor="@color/colorSplash"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:rating="5"
+        android:stepSize="1" />
+
+    <TextView
+        android:id="@+id/ratingScale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:text="Awesome. I love it.!"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/feedback_onfocus"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:minLines="4"
+        android:scrollbars="vertical"
+        android:textColor="@color/black"
+        />
+
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@drawable/loginbutton_selector"
+        android:drawableEnd="@drawable/send"
+        android:padding="10dp"
+        android:text="Send"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</LinearLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/moodcafe" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="email"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/email_white"
+        android:linksClickable="true"
+        android:text="contact@moodcafe.in"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="map"
+        android:drawableLeft="@drawable/location_white"
+        android:id="@+id/address"
+        android:text="CIIE, IIM Ahmedabad"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:text="moodcafe.in"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
+</LinearLayout>

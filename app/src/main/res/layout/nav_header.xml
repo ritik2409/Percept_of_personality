@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ThemeOverlay.AppCompat.Light"
+    android:layout_width="match_parent"
+    android:layout_height="172dp"
+    android:orientation="vertical"
+    android:padding="25dp">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:src="@drawable/my_account" />
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/TextAppearance.AppCompat.Body2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Ritik Gupta"
+        android:textSize="22sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+
+
+</LinearLayout>
